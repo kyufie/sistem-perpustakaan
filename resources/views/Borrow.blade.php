@@ -30,6 +30,11 @@
                                focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
                         required>
                         <option value="" disabled selected>Pilih buku…</option>
+                        @foreach ($books as $book)
+                        <option value="{{ $book->id }}">
+                            {{ $book->title }} — {{ $book->author->name ?? 'Tanpa Penulis' }}
+                        </option>
+                        @endforeach
                     </select>
                 </div>
 

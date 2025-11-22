@@ -38,26 +38,26 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 
         <!-- LOOPING EXAMPLE -->
-        @for ($i = 0; $i < 4; $i++)
-            <div class="bg-white shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden flex flex-col border border-gray-100 transform">
-            <img src="https://source.unsplash.com/random/300x40{{ $i }}?book" class="w-full h-56 object-cover">
+        @foreach ($books->take(4) as $book)
+        <div class="bg-white shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 rounded-xl overflow-hidden flex flex-col border border-gray-100 transform">
+            <img src="{{ $book['cover'] }}" class="w-full h-56 object-cover">
             <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-lg mb-1">Judul Buku</h3>
-                <p class="text-sm text-gray-500 mb-2">Penulis Buku</p>
+                <h3 class="font-semibold text-lg mb-1">{{ $book['title'] }}</h3>
+                <p class="text-sm text-gray-500 mb-2">{{ $book->author->name ?? 'Tidak ada penulis' }}</p>
                 <div class="flex items-center mb-2">
                     <span class="text-yellow-400 text-lg">★★★★☆</span>
                     <span class="text-gray-500 text-sm ml-2">4.7</span>
                 </div>
                 <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit…
+                    {{ $book['synopsis'] ?? 'Tidak ada sinopsis' }}
                 </p>
-                <a href="{{ route('book-detail') }}"
+                <a href="{{ route('book-detail', $book->id) }}"
                     class="px-3 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 w-full mt-auto text-center">
                     Detail
                 </a>
             </div>
-    </div>
-    @endfor
+        </div>
+        @endforeach
 
     </div>
 </section>
@@ -69,19 +69,20 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-        @for ($x = 0; $x < 3; $x++)
-            <div class="flex gap-4 bg-white p-4 shadow-sm hover:shadow-lg border border-gray-100 rounded-xl transition">
-            <img src="https://source.unsplash.com/random/20{{ $x }}x300?novel"
+        @foreach ($books->take(3) as $book)
+        <div class="flex gap-4 bg-white p-4 shadow-sm hover:shadow-lg border border-gray-100 rounded-xl transition">
+            <img src="{{ $book['cover'] }}"
                 class="w-24 rounded-lg shadow-sm">
             <div>
-                <h3 class="font-semibold text-lg">Buku Populer {{ $x + 1 }}</h3>
-                <p class="text-sm text-gray-500">Penulis Terkenal</p>
+                <h3 class="font-semibold text-lg">{{ $book['title'] }}</h3>
+                <p class="text-sm text-gray-500">{{ $book->author->name ?? 'Tidak ada penulis' }}</p>
+                <p class="text-sm text-gray-500">{{ $book->genre->name ?? '-' }}</p>
                 <span class="inline-block bg-yellow-400 text-gray-900 px-2 py-1 text-xs font-semibold rounded mt-2">
                     Rating 4.8
                 </span>
             </div>
-    </div>
-    @endfor
+        </div>
+        @endforeach
 
     </div>
 </section>
@@ -118,12 +119,12 @@
 
         <!-- MAPS -->
         <div class="w-full h-80 rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d761.387861180086!2d109.33819086894118!3d-7.429985383936791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6559f4d10d375f%3A0x57deaed7adab4ca8!2sGedung%20Pendidikan%20Fakultas%20Teknik%20Unsoed!5e0!3m2!1sid!2sid!4v1763798908434!5m2!1sid!2sid" 
-                width="100%" 
-                height="100%" 
-                style="border:0;" 
-                allowfullscreen="" 
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d761.387861180086!2d109.33819086894118!3d-7.429985383936791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6559f4d10d375f%3A0x57deaed7adab4ca8!2sGedung%20Pendidikan%20Fakultas%20Teknik%20Unsoed!5e0!3m2!1sid!2sid!4v1763798908434!5m2!1sid!2sid"
+                width="100%"
+                height="100%"
+                style="border:0;"
+                allowfullscreen=""
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
