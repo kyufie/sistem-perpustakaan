@@ -2,7 +2,7 @@
 @include('components.navbar')
 
 <!-- DETAIL BUKU -->
-<section class="container mx-auto px-6 mt-6 pt-20">
+<section class="container mx-auto px-6 mt-8 pt-20">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Cover Buku -->
         <div class="md:col-span-1 flex justify-center">
@@ -47,71 +47,5 @@
     </div>
 </section>
 
-<!-- BUKU TERKAIT / REKOMENDASI -->
-<section class="container mx-auto px-6 mt-16">
-    <h3 class="text-2xl font-bold text-blue-700 mb-6">Buku Terkait</h3>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-        <!-- Card Buku Rekomendasi -->
-        <div class="bg-gray-100 shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-            <img src="https://via.placeholder.com/300x400/CCCCCC/888888?text=Book" class="w-full h-52 object-cover">
-            <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-lg mb-1 text-blue-800">Judul Buku</h3>
-                <p class="text-sm text-gray-500 mb-2">Penulis</p>
-                <p class="text-sm text-gray-700 flex-grow">
-                    Ringkasan singkat buku terkait untuk menarik minat pembaca...
-                </p>
-                <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto">
-                    Detail
-                </button>
-            </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-gray-100 shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-            <img src="https://via.placeholder.com/301x400/CCCCCC/888888?text=Book" class="w-full h-52 object-cover">
-            <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-lg mb-1 text-blue-800">Judul Buku</h3>
-                <p class="text-sm text-gray-500 mb-2">Penulis</p>
-                <p class="text-sm text-gray-700 flex-grow">
-                    Ringkasan singkat buku terkait untuk menarik minat pembaca...
-                </p>
-                <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto">
-                    Detail
-                </button>
-            </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-gray-100 shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-            <img src="https://via.placeholder.com/302x400/CCCCCC/888888?text=Book" class="w-full h-52 object-cover">
-            <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-lg mb-1 text-blue-800">Judul Buku</h3>
-                <p class="text-sm text-gray-500 mb-2">Penulis</p>
-                <p class="text-sm text-gray-700 flex-grow">
-                    Ringkasan singkat buku terkait untuk menarik minat pembaca...
-                </p>
-                <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto">
-                    Detail
-                </button>
-            </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="bg-gray-100 shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-            <img src="https://via.placeholder.com/303x400/CCCCCC/888888?text=Book" class="w-full h-52 object-cover">
-            <div class="p-4 flex flex-col flex-grow">
-                <h3 class="font-semibold text-lg mb-1 text-blue-800">Judul Buku</h3>
-                <p class="text-sm text-gray-500 mb-2">Penulis</p>
-                <p class="text-sm text-gray-700 flex-grow">
-                    Ringkasan singkat buku terkait untuk menarik minat pembaca...
-                </p>
-                <button class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto">
-                    Detail
-                </button>
-            </div>
-        </div>
-    </div>
-</section>
 
 @include('templates.end')

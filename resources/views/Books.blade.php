@@ -3,128 +3,85 @@
 
 <div class="pt-20"></div>
 
-<!-- SEARCH & FILTER -->
 <section class="container mx-auto px-6 mt-6">
-    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-        <!-- Search Bar -->
-        <form action="{{ route('books') }}" method="GET" class="flex w-full md:w-1/2">
-            <input type="text" name="search" placeholder="Cari buku..." value="{{ request('search') }}"
-                class="flex-grow px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-r-md hover:bg-blue-700">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+        <form action="{{ route('books') }}" method="GET"
+            class="group flex w-full md:w-1/2 items-center">
+
+            <!-- INPUT -->
+            <input type="text" name="search"
+                placeholder="Cari judul, penulis, atau ISBN..."
+                value="{{ request('search') }}"
+                class="flex-grow px-5 py-2 
+                  border border-gray-300 
+                  rounded-full
+                  focus:outline-none focus:ring-2 focus:ring-blue-500
+                  transition-all duration-300" />
+
+            <!-- BUTTON (hidden until focus) -->
+            <button type="submit"
+                class="ml-2
+               opacity-0 group-focus-within:opacity-100
+               scale-75 group-focus-within:scale-100
+               transition-all duration-300 
+               px-5 py-2 bg-blue-600 text-white 
+               rounded-full
+               hover:bg-blue-700 flex items-center">
+
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5 mr-1" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
                 Cari
             </button>
+
         </form>
 
-        <!-- Filter Kategori -->
+
+
         <div class="flex gap-2 flex-wrap">
             <a href="{{ route('books', ['category' => 'Novel']) }}"
-                class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-100">Novel</a>
+                class="px-4 py-2 text-sm font-medium rounded-full transition duration-300 
+                {{ request('category') == 'Novel' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-200 text-gray-700 hover:bg-blue-100' }}">Novel</a>
+
             <a href="{{ route('books', ['category' => 'Teknologi']) }}"
-                class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-100">Teknologi</a>
+                class="px-4 py-2 text-sm font-medium rounded-full transition duration-300 
+                {{ request('category') == 'Teknologi' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-200 text-gray-700 hover:bg-blue-100' }}">Teknologi</a>
+
             <a href="{{ route('books', ['category' => 'Pendidikan']) }}"
-                class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-100">Pendidikan</a>
-            <a href="{{ route('books') }}" class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-100">Semua</a>
+                class="px-4 py-2 text-sm font-medium rounded-full transition duration-300 
+                {{ request('category') == 'Pendidikan' ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-200 text-gray-700 hover:bg-blue-100' }}">Pendidikan</a>
+
+            <a href="{{ route('books') }}"
+                class="px-4 py-2 text-sm font-medium rounded-full transition duration-300 
+               {{ !request('category') ? 'bg-blue-600 text-white shadow-md' : 'bg-gray-200 text-gray-700 hover:bg-blue-100' }}">Semua</a>
         </div>
     </div>
 
-    <!-- DAFTAR BUKU -->
-    <!-- DAFTAR BUKU -->
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-    <!-- CARD 1 -->
-    <div class="bg-white shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-        <img src="https://source.unsplash.com/random/300x400?book" class="w-full h-52 object-cover">
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        @for ($i = 1; $i <= 5; $i++)
+            <div class="bg-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl overflow-hidden flex flex-col transform hover:-translate-y-1">
+            <img src="https://source.unsplash.com/random/30{{ $i }}x400?book,library" class="w-full h-64 object-cover">
 
-        <div class="p-4 flex flex-col flex-grow">
-            <h3 class="font-semibold text-lg mb-1">Judul Buku 1</h3>
-            <p class="text-sm text-gray-500 mb-2">Penulis Buku 1</p>
+            <div class="p-4 flex flex-col flex-grow">
+                <span class="text-xs text-blue-500 font-semibold mb-1 uppercase">Kategori {{ $i }}</span>
+                <h3 class="font-bold text-lg mb-1 text-gray-800 line-clamp-2">Judul Buku {{ $i }} yang Agak Panjang</h3>
+                <p class="text-sm text-gray-500 mb-2">Penulis Terkenal</p>
 
-            <div class="flex items-center mb-2">
-                <span class="text-yellow-400 text-lg">★★★★★</span>
-                <span class="text-gray-500 text-sm ml-2">4.8</span>
+                <div class="flex items-center mb-4">
+                    <span class="text-yellow-500 text-base">★★★★★</span>
+                    <span class="text-gray-500 text-xs ml-2">(4.{{ $i }})</span>
+                </div>
+
+                <a href="{{ route('book-detail') }}" class="px-3 py-2 text-sm bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-300 w-full mt-auto text-center">
+                    Lihat Detail
+                </a>
             </div>
-
-            <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
-                Sinopsis singkat buku ini yang menjelaskan inti cerita secara ringkas...
-            </p>
-
-            <a href="{{ route('book-detail') }}" class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto text-center">
-                Detail
-            </a>
-        </div>
     </div>
-
-    <!-- CARD 2 -->
-    <div class="bg-white shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-        <img src="https://source.unsplash.com/random/301x400?book" class="w-full h-52 object-cover">
-
-        <div class="p-4 flex flex-col flex-grow">
-            <h3 class="font-semibold text-lg mb-1">Judul Buku 2</h3>
-            <p class="text-sm text-gray-500 mb-2">Penulis Buku 2</p>
-
-            <div class="flex items-center mb-2">
-                <span class="text-yellow-400 text-lg">★★★★☆</span>
-                <span class="text-gray-500 text-sm ml-2">4.2</span>
-            </div>
-
-            <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
-                Sinopsis singkat buku ini yang menjelaskan inti cerita secara ringkas...
-            </p>
-
-            <a href="#" class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto text-center">
-                Detail
-            </a>
-        </div>
+    @endfor
     </div>
-
-    <!-- CARD 3 -->
-    <div class="bg-white shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-        <img src="https://source.unsplash.com/random/302x400?book" class="w-full h-52 object-cover">
-
-        <div class="p-4 flex flex-col flex-grow">
-            <h3 class="font-semibold text-lg mb-1">Judul Buku 3</h3>
-            <p class="text-sm text-gray-500 mb-2">Penulis Buku 3</p>
-
-            <div class="flex items-center mb-2">
-                <span class="text-yellow-400 text-lg">★★★★★</span>
-                <span class="text-gray-500 text-sm ml-2">5.0</span>
-            </div>
-
-            <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
-                Sinopsis singkat buku ini yang menjelaskan inti cerita secara ringkas...
-            </p>
-
-            <a href="#" class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto text-center">
-                Detail
-            </a>
-        </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="bg-white shadow-md hover:shadow-xl transition-all rounded-lg overflow-hidden flex flex-col">
-        <img src="https://source.unsplash.com/random/303x400?book" class="w-full h-52 object-cover">
-
-        <div class="p-4 flex flex-col flex-grow">
-            <h3 class="font-semibold text-lg mb-1">Judul Buku 4</h3>
-            <p class="text-sm text-gray-500 mb-2">Penulis Buku 4</p>
-
-            <div class="flex items-center mb-2">
-                <span class="text-yellow-400 text-lg">★★★☆☆</span>
-                <span class="text-gray-500 text-sm ml-2">3.7</span>
-            </div>
-
-            <p class="text-sm text-gray-600 leading-relaxed mb-4 flex-grow">
-                Sinopsis singkat buku ini yang menjelaskan inti cerita secara ringkas...
-            </p>
-
-            <a href="#" class="px-3 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700 w-full mt-auto text-center">
-                Detail
-            </a>
-        </div>
-    </div>
-</div>
-
-
-    
 </section>
 
 @include('templates.end')
