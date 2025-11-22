@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('author_id')->constrained('authors', 'id');
+            $table->foreignId('genre_id')->constrained('genres', 'id');
             $table->string('cover');
             $table->string('synopsis');
             $table->timestamps();

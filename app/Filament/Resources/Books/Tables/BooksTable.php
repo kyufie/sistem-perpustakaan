@@ -18,19 +18,12 @@ class BooksTable
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('author.name')
-                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('genre.name')
                     ->sortable(),
                 ImageColumn::make('cover'),
                 TextColumn::make('synopsis')
                     ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

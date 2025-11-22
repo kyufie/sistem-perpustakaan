@@ -20,15 +20,7 @@ class BorrowsTable
                 TextColumn::make('book.title')
                     ->sortable(),
                 IconColumn::make('has_returned')
-                    ->boolean(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->boolean()
             ])
             ->filters([
                 //

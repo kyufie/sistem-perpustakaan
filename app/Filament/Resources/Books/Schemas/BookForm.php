@@ -17,6 +17,9 @@ class BookForm
                 Select::make('author_id')
                     ->relationship('author', 'name')
                     ->required(),
+                Select::make('genre_id')
+                    ->relationship('genre', 'name')
+                    ->required(),
                 TextInput::make('cover')
                     ->required(),
                 TextInput::make('synopsis')

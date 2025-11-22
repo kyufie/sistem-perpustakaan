@@ -17,15 +17,7 @@ class AuthorsTable
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('address')
-                    ->searchable(),
-                TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->searchable()
             ])
             ->filters([
                 //
