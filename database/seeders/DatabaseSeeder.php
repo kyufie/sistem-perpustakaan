@@ -3,9 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\BookSeeder;
+use Database\Seeders\GenreSeeder;
+use Database\Seeders\AuthorSeeder;
 use Spatie\Permission\Models\Role;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,5 +33,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'john@yahoo.com',
             'password' => bcrypt('john')
         ])->assignRole($user);
+        
+        $this->call([
+            GenreSeeder::class,
+            AuthorSeeder::class,
+            BookSeeder::class,
+        ]);
+        
     }
 }
