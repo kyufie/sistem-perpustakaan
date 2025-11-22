@@ -17,15 +17,20 @@ class BooksTable
             ->columns([
                 TextColumn::make('title')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Judul Buku'),
                 TextColumn::make('author.name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Nama Penulis'),
                 TextColumn::make('genre.name')
-                    ->sortable(),
-                ImageColumn::make('cover'),
+                    ->sortable()
+                    ->label('Genre'),
+                ImageColumn::make('cover')
+                    ->label('Kover'),
                 TextColumn::make('synopsis')
-                    ->searchable(),
+                    ->searchable()
+                    ->label('Sinopsis'),
             ])
             ->filters([
                 //

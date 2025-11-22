@@ -17,13 +17,16 @@ class BorrowsTable
             ->columns([
                 TextColumn::make('borrower.name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Nama Peminjam'),
                 TextColumn::make('book.title')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Judul Buku'),
                 IconColumn::make('has_returned')
                     ->sortable()
                     ->boolean()
+                    ->label('Sudah Dikembalikan')
             ])
             ->filters([
                 //

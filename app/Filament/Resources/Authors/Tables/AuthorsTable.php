@@ -17,10 +17,12 @@ class AuthorsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->label('Nama'),
                 TextColumn::make('address')
                     ->searchable()
                     ->sortable()
+                    ->label('Alamat')
             ])
             ->filters([
                 //
