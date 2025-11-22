@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Authors\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
@@ -15,14 +16,17 @@ class AuthorsTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('address')
                     ->searchable()
+                    ->sortable()
             ])
             ->filters([
                 //
             ])
             ->recordActions([
+                DeleteAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

@@ -16,8 +16,10 @@ class BooksTable
         return $table
             ->columns([
                 TextColumn::make('title')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('author.name')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('genre.name')
                     ->sortable(),

@@ -16,10 +16,13 @@ class BorrowsTable
         return $table
             ->columns([
                 TextColumn::make('borrower.name')
+                    ->searchable()
                     ->sortable(),
                 TextColumn::make('book.title')
+                    ->searchable()
                     ->sortable(),
                 IconColumn::make('has_returned')
+                    ->sortable()
                     ->boolean()
             ])
             ->filters([

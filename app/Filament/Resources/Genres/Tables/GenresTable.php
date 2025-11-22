@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Genres\Tables;
 
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\TextColumn;
@@ -16,11 +17,13 @@ class GenresTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->recordActions([
+                DeleteAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([

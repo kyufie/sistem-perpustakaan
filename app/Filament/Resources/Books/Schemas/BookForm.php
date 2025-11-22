@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Books\Schemas;
 
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -20,7 +21,7 @@ class BookForm
                 Select::make('genre_id')
                     ->relationship('genre', 'name')
                     ->required(),
-                TextInput::make('cover')
+                FileUpload::make('cover')
                     ->required(),
                 TextInput::make('synopsis')
                     ->required(),
