@@ -18,6 +18,9 @@ class BorrowResource extends Resource
 {
     protected static ?string $model = Borrow::class;
 
+    protected static ?string $modelLabel = 'Peminjaman';
+    protected static ?string $pluralModelLabel = 'Peminjaman';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema

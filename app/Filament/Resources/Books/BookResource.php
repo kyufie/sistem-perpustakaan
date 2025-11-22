@@ -18,6 +18,9 @@ class BookResource extends Resource
 {
     protected static ?string $model = Book::class;
 
+    protected static ?string $modelLabel = 'Buku';
+    protected static ?string $pluralModelLabel = 'Buku';
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema
